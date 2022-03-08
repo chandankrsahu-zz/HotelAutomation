@@ -29,9 +29,11 @@ public class HotelAutomationTest {
     void shouldTurnOnTheFirstSubCorridorLightWhenThereIsAMovement() {
         HotelFloor hotelFloor = new HotelFloor( 1, 2);
 
-        hotelFloor.addMovement(2);
+        hotelFloor.movementDetected(1);
 
-        assertThat(hotelFloor.isLightTurnedOn(2),is(true));
+        hotelFloor.normalizeElectrictyConsumption(1);
+
+        assertThat(hotelFloor.isLightTurnedOn(1),is(true));
 
     }
 }
