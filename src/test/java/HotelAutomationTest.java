@@ -6,22 +6,32 @@ import static org.hamcrest.Matchers.is;
 public class HotelAutomationTest {
     @Test
     void shouldCheckWhetherAllTheACsAreSwitchedOn() {
-        Hotel hotel = new Hotel(2, 1, 2);
+        HotelFloor hotelFloor = new HotelFloor( 1, 2);
 
-        assertThat(hotel.checkWhetherAcAreSwitchedOn(),is(true));
+        assertThat(hotelFloor.checkWhetherAcAreSwitchedOn(),is(true));
     }
 
     @Test
     void shouldCheckWhetherSubCorridorsLightsAreTurnedOffInitially() {
-        Hotel hotel = new Hotel(2, 1, 3);
+        HotelFloor hotelFloor = new HotelFloor(1, 3);
 
-        assertThat(hotel.checkWhetherSubCorridorsLightsAreOff(),is(true));
+        assertThat(hotelFloor.checkWhetherSubCorridorsLightsAreOff(),is(true));
     }
 
     @Test
     void shouldCheckWhetherMainCorridorsLightsAreTurnedOn() {
-        Hotel hotel = new Hotel(2, 1, 2);
+        HotelFloor hotelFloor = new HotelFloor( 1, 2);
 
-        assertThat(hotel.checkWhetherMainCorridorsLightsAreTurnedOn(),is(true));
+        assertThat(hotelFloor.checkWhetherMainCorridorsLightsAreTurnedOn(),is(true));
+    }
+
+    @Test
+    void shouldTurnOnTheFirstSubCorridorLightWhenThereIsAMovement() {
+        HotelFloor hotelFloor = new HotelFloor( 1, 2);
+
+        hotelFloor.addMovement(2);
+
+        assertThat(hotelFloor.isLightTurnedOn(2),is(true));
+
     }
 }
