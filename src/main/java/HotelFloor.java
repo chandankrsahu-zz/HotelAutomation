@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class HotelFloor {
     private final int numberOfMainCorridors;
@@ -56,7 +55,7 @@ public class HotelFloor {
         return (subCorridorsLight.get(subCorridor - 1));
     }
 
-    public void normalizeElectrictyConsumption(int subCorridor) {
+    public void normalizeElectricityConsumption(int subCorridor) {
         for (Boolean subCorridorsLightTurnedOn : subCorridorsLight)
             if (subCorridorsLightTurnedOn) totalElectricityConsumption += Appliance.LIGHT.getUnitConsumption();
         for (Boolean mainCorridorLightTurnedOn : mainCorridorsLight)
