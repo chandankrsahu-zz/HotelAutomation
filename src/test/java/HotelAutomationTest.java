@@ -17,4 +17,11 @@ public class HotelAutomationTest {
 
         assertThat(hotel.checkWhetherSubCorridorsLightsAreOff(),is(true));
     }
+
+    @Test
+    void shouldCheckWhetherMainCorridorsLightsAreTurnedOn() {
+        Hotel hotel = new Hotel(2, 1, 2);
+
+        assertThat(hotel.checkWhetherMainCorridorsLightsAreTurnedOn(),is(true));
+    }
 }
