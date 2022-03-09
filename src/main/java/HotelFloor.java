@@ -60,13 +60,18 @@ public class HotelFloor {
             if (subCorridorsLightTurnedOn) totalElectricityConsumption += Appliance.LIGHT.getUnitConsumption();
         for (Boolean mainCorridorLightTurnedOn : mainCorridorsLight)
             if (mainCorridorLightTurnedOn) totalElectricityConsumption += Appliance.LIGHT.getUnitConsumption();
+        for (Boolean subCorridorsACTurnedOn : subCorridorAC)
+            if (subCorridorsACTurnedOn) totalElectricityConsumption += Appliance.AC.getUnitConsumption();
+        for (Boolean mainCorridorACTurnedOn : mainCorridorAC)
+            if (mainCorridorACTurnedOn) totalElectricityConsumption += Appliance.AC.getUnitConsumption();
         if (checkWhetherPowerConsumptionExceeded()) {
+
             while (checkWhetherPowerConsumptionExceeded()) {
 
                 for (int i = 0; i < numberOfSubCorridors; i++) {
-                    if (i == subCorridor) continue;
-                    if (subCorridorAC.get(i)) {
-                        subCorridorAC.set(i, false);
+                    if (i == (subCorridor-1)) continue;
+                    if (subCorridorAC.get(i-1)) {
+                        subCorridorAC.set(i-1, false);
                         totalElectricityConsumption -= Appliance.AC.getUnitConsumption();
                         if (checkWhetherPowerConsumptionExceeded()) break;
                     }
