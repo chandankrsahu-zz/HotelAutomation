@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
 public class HotelFloor {
-    private final int numberOfMainCorridors;
-    private final int numberOfSubCorridors;
-    private ArrayList<Boolean> mainCorridorAC;
-    private ArrayList<Boolean> subCorridorAC;
-    private ArrayList<Boolean> mainCorridorsLight;
-    private ArrayList<Boolean> subCorridorsLight;
-    private int totalElectricityConsumption;
-    private int electricityConsumptionLimit;
+    protected final int numberOfMainCorridors;
+    protected final int numberOfSubCorridors;
+    protected ArrayList<Boolean> mainCorridorAC;
+    protected ArrayList<Boolean> subCorridorAC;
+    protected ArrayList<Boolean> mainCorridorsLight;
+    protected ArrayList<Boolean> subCorridorsLight;
+    protected int totalElectricityConsumption;
+    protected int electricityConsumptionLimit;
 
 
     public HotelFloor(int numberOfMainCorridors, int numberOfSubCorridors) {

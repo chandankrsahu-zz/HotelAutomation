@@ -6,42 +6,57 @@ import static org.hamcrest.Matchers.is;
 public class HotelAutomationTest {
     @Test
     void shouldCheckWhetherAllTheACsAreSwitchedOn() {
-        HotelFloor hotelFloor = new HotelFloor( 1, 2);
 
-        assertThat(hotelFloor.checkWhetherAcAreSwitchedOn(),is(true));
+        Hotel hotel = new Hotel(2);
+        hotel.Hotel[0] = new HotelFloor(1, 2);
+        hotel.Hotel[1] = new HotelFloor(1, 2);
+
+        assertThat(hotel.Hotel[0].checkWhetherAcAreSwitchedOn(), is(true));
+        assertThat(hotel.Hotel[1].checkWhetherAcAreSwitchedOn(), is(true));
+
+
     }
 
     @Test
     void shouldCheckWhetherSubCorridorsLightsAreTurnedOffInitially() {
-        HotelFloor hotelFloor = new HotelFloor(1, 3);
+        Hotel hotel = new Hotel(2);
+        hotel.Hotel[0] = new HotelFloor(1, 2);
+        hotel.Hotel[1] = new HotelFloor(1, 2);
 
-        assertThat(hotelFloor.checkWhetherSubCorridorsLightsAreOff(),is(true));
+        assertThat(hotel.Hotel[1].checkWhetherSubCorridorsLightsAreOff(), is(true));
+        assertThat(hotel.Hotel[0].checkWhetherSubCorridorsLightsAreOff(),is(true));
     }
 
     @Test
-    void shouldCheckWhetherMainCorridorsLightsAreTurnedOn() {
-        HotelFloor hotelFloor = new HotelFloor( 1, 2);
+    void shouldCheckWhetherMainCorridorsLightsAreTurnedOnInSecondFloor() {
+        Hotel hotel = new Hotel(2);
+        hotel.Hotel[0] = new HotelFloor(1, 2);
+        hotel.Hotel[1] = new HotelFloor(1, 2);
 
-        assertThat(hotelFloor.checkWhetherMainCorridorsLightsAreTurnedOn(),is(true));
+        assertThat(hotel.Hotel[1].checkWhetherMainCorridorsLightsAreTurnedOn(), is(true));
     }
 
     @Test
-    void shouldTurnOnTheFirstSubCorridorLightWhenThereIsAMovement() {
-        HotelFloor hotelFloor = new HotelFloor( 1, 2);
+    void shouldTurnOnTheFirstSubCorridorLightWhenThereIsAMovementInFirstFloor() {
+        Hotel hotel = new Hotel(2);
+        hotel.Hotel[0] = new HotelFloor(1, 2);
+        hotel.Hotel[1] = new HotelFloor(1, 2);
 
-        hotelFloor.movementDetected(1);
+        hotel.Hotel[0].movementDetected(1);
 
-        hotelFloor.normalizeElectricityConsumption(1);
+        hotel.Hotel[0].normalizeElectricityConsumption(1);
 
-        assertThat(hotelFloor.isLightTurnedOn(1),is(true));
+        assertThat(hotel.Hotel[0].isLightTurnedOn(1), is(true));
 
     }
 
     @Test
-    void shouldNotTurnOnTheSecondSubCorridorLightWhenThereIsNoMovement() {
-        HotelFloor hotelFloor = new HotelFloor(1, 2);
+    void shouldNotTurnOnTheSecondSubCorridorLightWhenThereIsNoMovementInSecondFloor() {
+        Hotel hotel = new Hotel(2);
+        hotel.Hotel[0] = new HotelFloor(1, 2);
+        hotel.Hotel[1] = new HotelFloor(1, 2);
 
-        assertThat(hotelFloor.isLightTurnedOn(2),is(false));
+        assertThat(hotel.Hotel[1].isLightTurnedOn(2), is(false));
 
     }
 }
